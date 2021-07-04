@@ -3,6 +3,7 @@
 ![tensorflow-lite-raspberrypi](https://i.ibb.co/T43zRmZ/tensorflow-lite-raspberrypi.png)
 
 Precompiled **TensorFlow Lite 2.5.0** binaries for **Raspberry Pi 3 & 4**.
+Read the following [blog post](https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi) for additional information.
 
 ## Supported features
 
