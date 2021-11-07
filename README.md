@@ -2,7 +2,7 @@
 
 ![tensorflow-lite-raspberrypi](https://i.ibb.co/T43zRmZ/tensorflow-lite-raspberrypi.png)
 
-Precompiled **TensorFlow Lite 2.6.0** binaries for **Raspberry Pi 3 & 4**.
+Precompiled **TensorFlow Lite 2.7.0** binaries for **Raspberry Pi 3 & 4**.
 Read the following [blog post](https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi) for additional information.
 
 ## Supported features
@@ -30,12 +30,19 @@ Tested on Raspberry Pi 4 Model B (8 GB).
 
 ## Install
 
-* `wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite.deb`
-* `sudo apt install -y ./tensorflow-lite.deb`
+```shell
+wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite.deb
+```
+
+```shell
+sudo apt install -y ./tensorflow-lite.deb
+```
 
 ## Uninstall
 
-* `sudo apt purge --autoremove -y tensorflow-lite`
+```shell
+sudo apt purge --autoremove -y tensorflow-lite
+```
 
 ## Debian Package
 
