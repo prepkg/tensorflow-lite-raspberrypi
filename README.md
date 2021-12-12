@@ -26,7 +26,7 @@ Tested on Raspberry Pi 4 Model B (8 GB).
 
 ### Supported OS
 
-* Raspberry Pi OS Buster (32-bit)
+* Raspberry Pi OS Bullseye (32-bit)
 
 ## Install
 
@@ -49,7 +49,7 @@ sudo apt purge --autoremove -y tensorflow-lite
 Debian package contains the following shared libraries:
 
 | Library                     | Description                                                            |
-| :-------------------------  | :--------------------------------------------------------------------- |
+|:----------------------------|:-----------------------------------------------------------------------|
 | libtensorflowlite_c.so      | C API to access TensorFlow Lite interpreter and perform an inference   |
 | libtensorflow-lite.so       | C++ API to access TensorFlow Lite interpreter and perform an inference |
 
