@@ -26,9 +26,11 @@ Tested on Raspberry Pi 4 Model B (8 GB).
 
 ### Supported OS
 
-* Raspberry Pi OS Bullseye (32-bit)
+* Raspberry Pi OS Bullseye (32-bit and 64-bit)
 
 ## Install
+
+* 32-bit:
 
 ```shell
 wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite.deb
@@ -36,6 +38,16 @@ wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/downl
 
 ```shell
 sudo apt install -y ./tensorflow-lite.deb
+```
+
+* 64-bit:
+
+```shell
+wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite_64.deb
+```
+
+```shell
+sudo apt install -y ./tensorflow-lite_64.deb
 ```
 
 ## Uninstall
