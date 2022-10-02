@@ -13,6 +13,7 @@ Read the following [blog post](https://lindevs.com/install-precompiled-tensorflo
 * Ruy matrix multiplication library
 * MMAP-based allocation
 * C and C++ APIs
+* Python 3 bindings
 
 ## Prerequisites
 
