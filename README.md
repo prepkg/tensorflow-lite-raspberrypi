@@ -1,6 +1,6 @@
 # tensorflow-lite-raspberrypi
 
-![tensorflow-lite-raspberrypi](https://i.ibb.co/T43zRmZ/tensorflow-lite-raspberrypi.png)
+> ⚠️ **LiteRT replaces TensorFlow Lite.** There are no plans to publish LiteRT packages, and this repository will be removed in the future.
 
 Precompiled **TensorFlow Lite 2.20.0** binaries for **Raspberry Pi 3 & 4**.
 Read the following [blog post](https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi) for additional information.
