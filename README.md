@@ -1,59 +1,69 @@
 # tensorflow-lite-raspberrypi
 
+[![GitHub Release](https://img.shields.io/github/v/release/prepkg/tensorflow-lite-raspberrypi)](https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest)
+[![License](https://img.shields.io/github/license/prepkg/tensorflow-lite-raspberrypi)](https://github.com/prepkg/tensorflow-lite-raspberrypi/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/prepkg/tensorflow-lite-raspberrypi/total)](https://github.com/prepkg/tensorflow-lite-raspberrypi/releases)
+
 > ⚠️ **LiteRT replaces TensorFlow Lite.** There are no plans to publish LiteRT packages, and this repository will be removed in the future.
 
-Precompiled **TensorFlow Lite 2.20.0** binaries for **Raspberry Pi 3 & 4**.
-Read the following [blog post](https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi) for additional information.
+TensorFlow Lite binaries are compiled with the [GCC Toolchain](https://github.com/prepkg/gcc-toolchain) targeting older
+glibc versions, ensuring compatibility across a wide range of Raspberry Pi boards running Raspberry Pi OS 64-bit.
 
-## Supported features
+## Why?
 
-* NEON optimization
-* VFPv4 optimization
-* XNNPACK delegate
-* Ruy matrix multiplication library
-* MMAP-based allocation
-* C and C++ APIs
-* Python 3 bindings
+* **No official TensorFlow Lite packages.** There are no prebuilt official TensorFlow Lite packages for Raspberry Pi OS,
+  forcing users to compile it from source themselves.
+* **Slow compilation on Raspberry Pi.** Building TensorFlow Lite directly on a Raspberry Pi can take hours and often
+  runs into the limited RAM available on the device.
+* **No extra dependencies.** The required libraries are statically linked, so the TensorFlow Lite binaries only depend
+  on the base system libraries already present on Raspberry Pi OS.
 
-## Prerequisites
+## Build Information
 
-### Supported Boards
+* Dynamically linked with an older glibc version. For details, see the [GCC Toolchain](https://github.com/prepkg/gcc-toolchain).
+* Statically linked with libstdc++, and libgcc.
 
-* Raspberry Pi 3 Model A+
-* Raspberry Pi 3 Model B+
-* Raspberry Pi 4 Model B
+## Precompiled Binaries
 
-Tested on Raspberry Pi 4 Model B (8 GB).
-
-### Supported OS
-
-* Raspberry Pi OS Bookworm 64-bit
-
-## Install
+If you prefer not to build the TensorFlow Lite yourself, a precompiled TensorFlow Lite can be downloaded from the [releases page](https://github.com/prepkg/tensorflow-lite-raspberrypi/releases).
 
 ```shell
-wget https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite_64.deb
+curl -sSLo tensorflow-lite.deb https://github.com/prepkg/tensorflow-lite-raspberrypi/releases/latest/download/tensorflow-lite-aarch64-linux-gnu.deb \
+  && sudo apt install -y ./tensorflow-lite.deb \
+  && rm -rf tensorflow-lite.deb
 ```
+
+## Compilation
+
+### Requirements
+
+* Git
+* Docker
+
+### Instructions
+
+* Clone the repository:
 
 ```shell
-sudo apt install -y ./tensorflow-lite_64.deb
+git clone https://github.com/prepkg/tensorflow-lite-raspberrypi.git && cd tensorflow-lite-raspberrypi
 ```
 
-## Uninstall
+* Build the Docker image:
 
 ```shell
-sudo apt purge --autoremove -y tensorflow-lite
+./setup.sh build-image
 ```
 
-## Debian Package
+* Build the library:
 
-Debian package contains the following shared libraries:
+```shell
+./setup.sh build-lib
+```
 
-| Library                     | Description                                                            |
-|:----------------------------|:-----------------------------------------------------------------------|
-| libtensorflowlite_c.so      | C API to access TensorFlow Lite interpreter and perform an inference   |
-| libtensorflow-lite.so       | C++ API to access TensorFlow Lite interpreter and perform an inference |
+After compilation, the `deb` package will be available in the `build` directory.
 
-## Reference
+* (Optional) Run the test to verify that the library links correctly and the resulting binary runs under QEMU:
 
-1. [TensorFlow Lite repository](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite)
+```shell
+./setup.sh test-lib
+```
